@@ -9,9 +9,10 @@
 <body>
 <canvas class="matrix-bg" id="matrix"></canvas>
 <div class="scanlines"></div>
+<div class="overlay" id="overlay"></div>
+<button class="back-button" id="backButton">◄ BACK</button>
 
 <div class="container">
-    <!-- Login Page -->
     <div class="terminal" id="loginPage">
         <div class="header-text">
             <h1 class="glitch">◆ SECURE ACCESS TERMINAL ◆</h1>
@@ -24,18 +25,17 @@
 
         <div class="input-group">
             <label for="username">AGENT IDENTIFICATION</label>
-            <input type="text" id="username" placeholder="Enter agent codename...">
+            <input type="text" id="username" placeholder="Enter agent codename..." autofocus aria-label="Agent codename">
         </div>
 
         <div class="input-group">
             <label for="password">SECURITY CLEARANCE CODE</label>
-            <input type="password" id="password" placeholder="Enter classified password...">
+            <input type="password" id="password" placeholder="Enter classified password..." aria-label="Security clearance code">
         </div>
 
-        <button class="btn" onclick="login()">► INITIATE ACCESS ◄</button>
+        <button id="loginBtn" class="btn" onclick="login()" aria-label="Initiate access">► INITIATE ACCESS ◄</button>
     </div>
 
-    <!-- Dashboard Page -->
     <div class="terminal" id="dashboardPage" style="max-width: 900px;">
         <div class="dashboard-header">
             <h1 class="typing">◆ CLASSIFIED DATABASE ◆</h1>
@@ -47,37 +47,89 @@
         </div>
 
         <h2 style="margin-bottom: 20px; letter-spacing: 2px; text-shadow: 0 0 10px #0f0;">
-            ► CLASSIFIED UI/UX INTELLIGENCE FILES
+            ► GEOPOLITICAL ANALYSIS FILES (2025)
         </h2>
 
         <div class="cards">
-            <div class="card">
+                <div class="card">
                 <div class="card-header">
-                    <div class="card-icon">01</div>
-                    <h3>ประเด็น 1: INTERFACE PROTOCOLS</h3>
+                    <div class="card-icon">Q1</div>
+                    <h3>ประเด็น 1: ความขัดแย้งชายแดนไทย–กัมพูชาในปี 2025 และ "ข้อตกลงกัวลาลัมเปอร์"</h3>
                 </div>
-                <p>// CLASSIFIED DATA: การออกแบบ User Interface ระดับสูงต้องใช้เทคนิคการปกปิดข้อมูล ความเรียบง่ายที่หลอกลวง และการออกแบบที่ซ่อนฟังก์ชันลับไว้ภายใน เพื่อป้องกันการเข้าถึงโดยไม่ได้รับอนุญาต</p>
+                <div class="input-group" style="display: flex; gap: 10px; align-items: center; background: rgba(0,30,0,0.5); padding: 15px; border: 1px solid #0f0; margin: 15px 0;">
+                    <label style="margin-bottom: 0; flex-shrink: 0;">DECRYPTION KEY:</label>
+                    <input type="password" class="decrypt-input" data-content="1" placeholder="Enter key..." style="width: 100%; margin: 0;">
+                    <button class="btn" onclick="revealContent(1)" style="width: auto; padding: 10px 20px; margin-top: 0; flex-shrink: 0;">DECRYPT</button>
+                </div>
+                <p id="placeholder1" style="color: rgba(0, 255, 0, 0.5);">// DATA ENCRYPTED. AWAITING DECRYPTION KEY...</p>
+                <div id="content1" class="card-content" style="display: none;">
+                    <p>
+
+                        วันนี้ผมจะเล่าถึงความตึงเครียดตามแนวชายแดนไทย–กัมพูชาในปี 2025 และบทบาทของอาเซียนในการยุติความรุนแรง เรื่องเริ่มจากข้อพิพาทที่ดูเหมือนจะเป็นเรื่องพรมแดนหรือวัดโบราณ แต่กลับเปิดเผยว่ามีเดิมพันเชิงเศรษฐกิจและพลังงานขนาดใหญ่ซ่อนอยู่เบื้องหลัง โดยเฉพาะพื้นที่อ่าวไทยที่มีเขตอ้างสิทธิ์ทับซ้อน (OCA) ซึ่งมีศักยภาพทรัพยากรธรรมชาติสูง<br><br>
+                        ความรุนแรงในเดือนกรกฎาคม 2025 ใช้อาวุธหนักทั้งปืนใหญ่จรวด รถถัง และโดรน ทำให้มีผู้เสียชีวิตกว่า 38 คน และประชาชนกว่า 260,000 คนต้องอพยพ สถานการณ์บีบให้ต้องมีการหยุดยิงทันที<br><br>
+                        มาเลเซียในฐานะประธานอาเซียนปีนั้น ใช้เวทีอาเซียนเป็นตัวกลางต่อรองจนเกิด “ข้อตกลงกัวลาลัมเปอร์” — การหยุดยิงโดยไม่มีเงื่อนไขเมื่อ 28 กรกฎาคม 2025 ภายใต้กลไกตรวจสอบของอาเซียนและการสนับสนุนจากนานาชาติ ข้อตกลงนี้ไม่เพียงหยุดการสู้รบชั่วคราว แต่ยังทดสอบความสามารถของอาเซียนในการจัดการปัญหาภายในภูมิภาคอีกด้วย<br><br>
+                        สรุปสั้น ๆ คือ การปะทะครั้งนี้เผยให้เห็นว่าปัญหาชายแดนในภูมิภาคไม่ได้เป็นแค่เรื่องเส้นพรมแดน แต่เกี่ยวพันกับผลประโยชน์ด้านพลังงานและเศรษฐกิจ — และข้อตกลงกัวลาลัมเปอร์เป็นตัวอย่างของความพยายามใช้การทูตระดับภูมิภาคเพื่อยุติความรุนแรงและเปิดช่องทางเจรจาเชิงนโยบาย-เศรษฐกิจต่อไป
+                    </p>
+                </div>
             </div>
 
-            <div class="card">
+                <div class="card">
                 <div class="card-header">
-                    <div class="card-icon">02</div>
-                    <h3>ประเด็น 2: USER EXPERIENCE TACTICS</h3>
+                    <div class="card-icon">Q2</div>
+                    <h3>ประเด็น 2: MOU กัวลาลัมเปอร์ (26 ต.ค. 2025) — ข้อตกลงห่วงโซ่อุปทานแร่สำคัญ</h3>
                 </div>
-                <p>// CLASSIFIED DATA: การสร้าง User Experience สำหรับระบบรักษาความปลอดภัยต้องคำนึงถึงการควบคุมการเข้าถึง การติดตามพฤติกรรม และการสร้างประสบการณ์ที่ปลอดภัยในทุกขั้นตอน พร้อมระบบเตือนภัยอัตโนมัติ</p>
+                <div class="input-group" style="display: flex; gap: 10px; align-items: center; background: rgba(0,30,0,0.5); padding: 15px; border: 1px solid #0f0; margin: 15px 0;">
+                    <label style="margin-bottom: 0; flex-shrink: 0;">DECRYPTION KEY:</label>
+                    <input type="password" class="decrypt-input" data-content="2" placeholder="Enter key..." style="width: 100%; margin: 0;">
+                    <button class="btn" onclick="revealContent(2)" style="width: auto; padding: 10px 20px; margin-top: 0; flex-shrink: 0;">DECRYPT</button>
+                </div>
+                <p id="placeholder2" style="color: rgba(0, 255, 0, 0.5);">// DATA ENCRYPTED. AWAITING DECRYPTION KEY...</p>
+                <div id="content2" class="card-content" style="display: none;">
+                    <p>
+                        (Narrator: ต้าหรือแตม)<br>
+                        ต่อมาในวันที่ 26 ตุลาคม 2025 ที่กรุงกัวลาลัมเปอร์ มีการลงนาม MOU ระหว่างประธานาธิบดีสหรัฐฯ และนายกรัฐมนตรีไทย เรื่อง “ความร่วมมือกระจายห่วงโซ่อุปทานแร่หายากและแร่สำคัญ”<br><br>
+                        ข้อตกลงนี้เกิดขึ้นจากบริบททางเศรษฐกิจที่เปลี่ยนไปในปี 2024 เมื่อการผลิตแร่หายากของไทยพุ่งขึ้นอย่างรวดเร็ว — เพิ่มขึ้นเป็น 261% ในปีเดียว ทำให้ไทยกลายเป็นผู้ผลิตอันดับ 6 ของโลกอย่างฉับพลัน<br><br>
+                        เหตุผลเชิงยุทธศาสตร์คือ สหรัฐฯ มองหาพันธมิตรนอกอิทธิพลของจีนเพื่อสร้างห่วงโซ่อุปทานที่หลากหลาย แร่เหล่านี้เป็นวัสดุสำคัญในการผลิตรถยนต์ไฟฟ้า ชิปอิเล็กทรอนิกส์ และอาวุธขั้นสูง การที่ไทยมีศักยภาพด้านแร่สำคัญจึงทำให้ได้รับความสนใจจากสหรัฐฯ อย่างมาก<br><br>
+                        อย่างไรก็ตาม ข้อตกลงในลักษณะนี้ยังสะท้อนความเปราะบางของไทยทางการเมืองระหว่างการสร้างพันธมิตรเชิงความมั่นคงกับสหรัฐฯ และการพึ่งพาการลงทุนเชิงเศรษฐกิจจากจีน — ซึ่งจะผสานกับประเด็นที่เราจะพูดต่อในสคริปต์ถัดไป
+                    </p>
+                </div>
             </div>
 
-            <div class="card">
+                <div class="card">
                 <div class="card-header">
-                    <div class="card-icon">03</div>
-                    <h3>ประเด็น 3: SECURITY TESTING</h3>
+                    <div class="card-icon">Q3</div>
+                    <h3>ประเด็น 3: ความสมดุลเชิงภูมิรัฐศาสตร์ — จีน vs สหรัฐฯ ต่อหน้าผลประโยชน์ไทย</h3>
                 </div>
-                <p>// CLASSIFIED DATA: การทดสอบระบบความปลอดภัย UI/UX ต้องใช้เทคนิค Penetration Testing การจำลองการโจมตี และการวิเคราะห์จุดอ่อนอย่างต่อเนื่อง เพื่อป้องกันการบุกรุกและรักษาข้อมูลลับ</p>
+                <div class="input-group" style="display: flex; gap: 10px; align-items: center; background: rgba(0,30,0,0.5); padding: 15px; border: 1px solid #0f0; margin: 15px 0;">
+                    <label style="margin-bottom: 0; flex-shrink: 0;">DECRYPTION KEY:</label>
+                    <input type="password" class="decrypt-input" data-content="3" placeholder="Enter key..." style="width: 100%; margin: 0;">
+                    <button class="btn" onclick="revealContent(3)" style="width: auto; padding: 10px 20px; margin-top: 0; flex-shrink: 0;">DECRYPT</button>
+                </div>
+                <p id="placeholder3" style="color: rgba(0, 255, 0, 0.5);">// DATA ENCRYPTED. AWAITING DECRYPTION KEY...</p>
+                <div id="content3" class="card-content" style="display: none;">
+                    <p>
+                        (Narrator: Danny)<br>
+                        (เปิด) สวัสดีครับ/ค่ะ ในช่วงนี้เรากำลังเห็นภาพความเปลี่ยนแปลงเชิงยุทธศาสตร์ที่สำคัญสำหรับประเทศไทย — ไม่ใช่แค่เรื่องชายแดนหรือการลงทุนทั่วไป แต่เป็นการที่ไทยต้องรักษาสมดุลระหว่างพรมแดนเศรษฐกิจและความมั่นคงระหว่างมหาอำนาจ<br><br>
+                        <b>ภาพรวมความสัมพันธ์จีน–ไทย (เศรษฐกิจ)</b><br>
+                        จีนเป็นนักลงทุนต่างชาติอันดับหนึ่งในโครงการ EEC — ระเบียงเศรษฐกิจที่มีเป้าหมายสร้างอุตสาหกรรมแห่งอนาคตของไทย มูลค่าการลงทุนกว่า 8.4 พันล้านดอลลาร์สะท้อนความสัมพันธ์เชิงเศรษฐกิจที่ลึกซึ้ง...<br><br>
+                        <b>ความสัมพันธ์ไทย–สหรัฐฯ (ความมั่นคง)</b><br>
+                        ไทยมีสถานะเป็น “Major Non-NATO Ally” ของสหรัฐฯ ซึ่งเปิดช่องให้ความร่วมมือด้านความมั่นคงที่เข้มข้นกว่าเพื่อนอาเซียนส่วนใหญ่ นี่คือเหตุผลที่สหรัฐฯ ให้ความสนใจในศักยภาพแร่หายากของไทย...<br><br>
+                        <b>การเกิด REE Deal และความเปราะบางของไทย</b><br>
+                        เมื่อไทยกลายเป็นผู้ผลิต REE อันดับโลก การเข้ามาของสหรัฐฯ ในรูปแบบ MOU เพื่อกระจายห่วงโซ่อุปทานเป็นเรื่องเชิงยุทธศาสตร์ แต่ก็สร้างภาวะ “สมดุลเชิงเสี่ยง” ให้ไทย...<br><br>
+                        <b>การจัดการความเสี่ยงและการสื่อสารสาธารณะ</b><br>
+                        เพื่อคลายความกังวล... รัฐบาลไทยและสถานทูตสหรัฐฯ จึงออกแถลงร่วมเพื่อย้ำว่า MOU ดังกล่าว “ไม่มีผลผูกพันทางกฎหมาย” และใช้คำว่า “ผู้เข้าร่วม” (participants) แทน “คู่สัญญา” (parties)...<br><br>
+                        <b>บทสรุปและข้อเสนอเชิงนโยบายสั้น ๆ</b><br>
+                        - ไทยควรใช้โอกาสจาก REE ในการเพิ่มมูลค่าในประเทศ (เช่น การลงทุนในอุตสาหกรรมแปรรูปและเทคโนโลยี) ไม่ใช่แค่ส่งวัตถุดิบออกนอกประเทศ<br>
+                        - ต้องรักษาความโปร่งใสในการเจรจาทางการต่างประเทศและการลงทุน<br>
+                        - ใช้การทูตเชิงรุกกับทั้งจีนและสหรัฐฯ เพื่อสร้าง “เชื่อมโยงผลประโยชน์ที่ชัดเจน” แทนการเลือกข้าง<br><br>
+                        (ปิด) สรุปคือ ไทยอยู่ในจุดที่มีโอกาสเชิงยุทธศาสตร์สูง แต่ต้องเดินอย่างระมัดระวัง การสื่อสารที่ชัดเจนและนโยบายภายในที่มุ่งสร้างมูลค่าเพิ่มภายในประเทศจะเป็นกุญแจสำคัญ...
+                    </p>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<script src="script.js"></script>
+<script src="script.fixed.js"></script>
 </body>
 </html>
