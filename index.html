@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLASSIFIED ACCESS</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+<canvas class="matrix-bg" id="matrix"></canvas>
+<div class="scanlines"></div>
+
+<div class="container">
+    <!-- Login Page -->
+    <div class="terminal" id="loginPage">
+        <div class="header-text">
+            <h1 class="glitch">◆ SECURE ACCESS TERMINAL ◆</h1>
+            <p>UNAUTHORIZED ACCESS IS PROHIBITED</p>
+        </div>
+
+        <div class="warning">
+            ⚠ WARNING: ALL ACTIVITY IS MONITORED ⚠
+        </div>
+
+        <div class="input-group">
+            <label for="username">AGENT IDENTIFICATION</label>
+            <input type="text" id="username" placeholder="Enter agent codename...">
+        </div>
+
+        <div class="input-group">
+            <label for="password">SECURITY CLEARANCE CODE</label>
+            <input type="password" id="password" placeholder="Enter classified password...">
+        </div>
+
+        <button class="btn" onclick="login()">► INITIATE ACCESS ◄</button>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div class="terminal" id="dashboardPage" style="max-width: 900px;">
+        <div class="dashboard-header">
+            <h1 class="typing">◆ CLASSIFIED DATABASE ◆</h1>
+            <button class="logout-btn" onclick="logout()">TERMINATE</button>
+        </div>
+
+        <div class="access-level">
+            AGENT: <span id="displayUsername"></span> | CLEARANCE: TOP SECRET | SESSION: ACTIVE
+        </div>
+
+        <h2 style="margin-bottom: 20px; letter-spacing: 2px; text-shadow: 0 0 10px #0f0;">
+            ► CLASSIFIED UI/UX INTELLIGENCE FILES
+        </h2>
+
+        <div class="cards">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">01</div>
+                    <h3>ประเด็น 1: INTERFACE PROTOCOLS</h3>
+                </div>
+                <p>// CLASSIFIED DATA: การออกแบบ User Interface ระดับสูงต้องใช้เทคนิคการปกปิดข้อมูล ความเรียบง่ายที่หลอกลวง และการออกแบบที่ซ่อนฟังก์ชันลับไว้ภายใน เพื่อป้องกันการเข้าถึงโดยไม่ได้รับอนุญาต</p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">02</div>
+                    <h3>ประเด็น 2: USER EXPERIENCE TACTICS</h3>
+                </div>
+                <p>// CLASSIFIED DATA: การสร้าง User Experience สำหรับระบบรักษาความปลอดภัยต้องคำนึงถึงการควบคุมการเข้าถึง การติดตามพฤติกรรม และการสร้างประสบการณ์ที่ปลอดภัยในทุกขั้นตอน พร้อมระบบเตือนภัยอัตโนมัติ</p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">03</div>
+                    <h3>ประเด็น 3: SECURITY TESTING</h3>
+                </div>
+                <p>// CLASSIFIED DATA: การทดสอบระบบความปลอดภัย UI/UX ต้องใช้เทคนิค Penetration Testing การจำลองการโจมตี และการวิเคราะห์จุดอ่อนอย่างต่อเนื่อง เพื่อป้องกันการบุกรุกและรักษาข้อมูลลับ</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

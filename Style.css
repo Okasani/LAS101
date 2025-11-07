@@ -1,0 +1,313 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: #000;
+    color: #0f0;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+            0deg,
+            rgba(0, 255, 0, 0.05) 0px,
+            rgba(0, 255, 0, 0.05) 1px,
+            transparent 1px,
+            transparent 2px
+    );
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.terminal {
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid #0f0;
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.5), inset 0 0 50px rgba(0, 255, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    padding: 30px;
+    position: relative;
+}
+
+.terminal::before {
+    content: '■ CLASSIFIED SYSTEM ACCESS';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    background: #0f0;
+    color: #000;
+    padding: 5px 15px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.terminal::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+}
+
+#loginPage {
+    margin-top: 20px;
+}
+
+.header-text {
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px #0f0;
+}
+
+.header-text h1 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+}
+
+.warning {
+    color: #ff0;
+    text-align: center;
+    margin-bottom: 20px;
+    animation: blink 1.5s infinite;
+    text-shadow: 0 0 10px #ff0;
+}
+
+@keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0.3; }
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #0f0;
+    font-weight: bold;
+    text-shadow: 0 0 5px #0f0;
+}
+
+.input-group label::before {
+    content: '> ';
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    background: #000;
+    border: 1px solid #0f0;
+    color: #0f0;
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.input-group input:focus {
+    outline: none;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+}
+
+.input-group input::placeholder {
+    color: rgba(0, 255, 0, 0.4);
+}
+
+.btn {
+    background: #000;
+    color: #0f0;
+    padding: 15px 40px;
+    border: 2px solid #0f0;
+    font-family: 'Courier New', monospace;
+    font-size: 18px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    transition: all 0.3s;
+    text-shadow: 0 0 5px #0f0;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.btn:hover {
+    background: #0f0;
+    color: #000;
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.8);
+}
+
+#dashboardPage {
+    display: none;
+}
+
+.dashboard-header {
+    background: #000;
+    border-bottom: 2px solid #0f0;
+    padding: 20px;
+    margin: -30px -30px 30px -30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-header h1 {
+    font-size: 1.5em;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px #0f0;
+}
+
+.logout-btn {
+    background: transparent;
+    color: #f00;
+    padding: 8px 20px;
+    border: 1px solid #f00;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 0 5px #f00;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+.logout-btn:hover {
+    background: #f00;
+    color: #000;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+}
+
+.access-level {
+    color: #ff0;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #ff0;
+}
+
+.cards {
+    display: grid;
+    gap: 20px;
+}
+
+.card {
+    background: rgba(0, 20, 0, 0.5);
+    border: 1px solid #0f0;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: 'CLASSIFIED';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 8px;
+    color: #f00;
+    opacity: 0.5;
+    letter-spacing: 1px;
+}
+
+.card:hover {
+    background: rgba(0, 50, 0, 0.8);
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+    transform: translateX(10px);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.card-icon {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 0 0 10px #0f0;
+}
+
+.card h3 {
+    color: #0f0;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px #0f0;
+}
+
+.card p {
+    color: #0f0;
+    line-height: 1.6;
+    opacity: 0.8;
+}
+
+.typing {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 2s steps(40);
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+.glitch {
+    animation: glitch 0.3s infinite;
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+.hidden {
+    display: none;
+}
+
+canvas {
+    display: block;
+}
